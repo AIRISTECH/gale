@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIRIS | Administração da Galeria</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-text">
+        <h1>Administração</h1>
+        <p class="subtitle">Gerencie turmas e fotos</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Galeria</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h3>Acesso</h3>
+      <p class="muted">Senha padrão: <code>airis123</code> (você pode alterá-la abaixo)</p>
+      <form id="loginForm" class="grid">
+        <input id="pwd" type="password" placeholder="Senha" autocomplete="current-password" required />
+        <button class="btn" type="submit">Entrar</button>
+      </form>
+    </section>
+
+    <section id="adminPanel" class="hidden">
+      <div class="section-title">
+        <h3>Painel da Professora</h3>
+        <div class="actions">
+          <button id="logout" class="btn outline">Sair</button>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <section class="card">
+          <h4>Criar/Editar Turma</h4>
+          <form id="classForm" class="stack">
+            <input type="hidden" id="classId" />
+            <label>Nome da turma
+              <input id="className" type="text" placeholder="Ex.: 3º Ano A" required />
+            </label>
+            <label>Capa da turma
+              <input id="classCover" type="file" accept="image/*" />
+            </label>
+            <div class="row">
+              <button class="btn" type="submit">Salvar turma</button>
+              <button class="btn danger" id="deleteClass" type="button">Excluir turma</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card">
+          <h4>Enviar Fotos</h4>
+          <form id="uploadForm" class="stack">
+            <label>Selecione a turma
+              <select id="classSelect"></select>
+            </label>
+            <label>Fotos (arraste e solte ou clique)
+              <input id="photosInput" type="file" accept="image/*" multiple />
+            </label>
+            <div id="dropZone" class="dropzone">Solte as fotos aqui</div>
+            <button class="btn" type="submit">Adicionar fotos</button>
+          </form>
+        </section>
+      </div>
+
+      <section class="card">
+        <h4>Segurança</h4>
+        <form id="passwordForm" class="grid">
+          <input id="newPwd" type="password" placeholder="Nova senha" autocomplete="new-password" />
+          <button class="btn outline" type="submit">Alterar senha</button>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Criado por <a href="https://airistec.shop" target="_blank" rel="noopener">AIRIS</a>. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AIRIS.initAdmin();
+    });
+  </script>
+</body>
+</html>

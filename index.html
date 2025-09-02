@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIRIS | Galeria da Professora</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-text">
+        <h1>Galeria da Professora</h1>
+        <p class="subtitle">Momentos que transformam a sala de aula.</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#galeria">Galeria</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+      <a href="admin.html" class="btn small">Área da Professora</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <h2>Bem-vindo(a) à Galeria</h2>
+      <p>Veja as turmas, projetos e registros de aula — tudo reunido com carinho.</p>
+      <a href="#galeria" class="btn">Ver turmas</a>
+    </div>
+  </section>
+
+  <main id="galeria" class="container">
+    <div class="section-title">
+      <h3>Turmas</h3>
+      <div class="actions">
+        <input id="search" type="search" placeholder="Buscar turma..." />
+        <button id="exportBackup" class="btn outline">Exportar backup</button>
+        <label class="btn outline">
+          Importar backup
+          <input id="importBackup" type="file" accept="application/json" hidden />
+        </label>
+      </div>
+    </div>
+
+    <div id="classGrid" class="card-grid"></div>
+
+    <template id="class-card-template">
+      <article class="card class-card">
+        <div class="cover-wrap">
+          <img class="cover" alt="" />
+          <span class="badge"><span class="count">0</span> fotos</span>
+        </div>
+        <div class="card-body">
+          <h4 class="class-name"></h4>
+          <div class="card-actions">
+            <button class="btn small view">Ver</button>
+          </div>
+        </div>
+      </article>
+    </template>
+  </main>
+
+  <section id="sobre" class="container about">
+    <div class="section-title"><h3>Sobre o projeto</h3></div>
+    <p>Este site foi desenvolvido pela <strong>AIRIS</strong> para facilitar a vida de professoras e escolas. 
+      Tudo funciona direto no navegador, sem servidor, com segurança local (LocalStorage). 
+      A qualquer momento você pode exportar um backup para guardar com você.</p>
+  </section>
+
+  <section id="contato" class="cta">
+    <div class="cta-inner container">
+      <h3>Quer um site tão caprichado quanto este?</h3>
+      <p>Apresente sua escola, cursos e projetos com uma presença digital moderna.</p>
+      <a class="btn large" href="https://airistec.shop" target="_blank" rel="noopener">Fale com a AIRIS</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Criado por <a href="https://airistec.shop" target="_blank" rel="noopener">AIRIS</a>. Todos os direitos reservados.</p>
+  </footer>
+
+  <dialog id="lightbox">
+    <div class="lightbox-content">
+      <button class="icon-btn close" aria-label="Fechar">&times;</button>
+      <img id="lightboxImg" alt="" />
+      <p id="lightboxCaption"></p>
+    </div>
+  </dialog>
+
+  <dialog id="classModal" class="class-modal">
+    <div class="modal-header">
+      <h4 id="modalClassName">Turma</h4>
+      <button class="icon-btn close-class" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="photoGrid" class="photo-grid"></div>
+    </div>
+  </dialog>
+
+  <script src="scripts.js"></script>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      AIRIS.initPublic();
+    });
+  </script>
+</body>
+</html>
